@@ -11,17 +11,17 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps(context) {
-  let ip;
-
   const { req } = context;
+  let ip =req.connection.remoteAddress
 
-  if (req.headers['x-forwarded-for']) {
-    ip = req.headers['x-forwarded-for'].split(',')[0];
-  } else if (req.headers['x-real-ip']) {
-    ip = req.connection.remoteAddress;
-  } else {
-    ip = req.connection.remoteAddress;
-  }
+
+  // if (req.headers['x-forwarded-for']) {
+  //   ip = req.headers['x-forwarded-for'].split(',')[0];
+  // } else if (req.headers['x-real-ip']) {
+  //   ip = req.connection.remoteAddress;
+  // } else {
+  //   ip = req.connection.remoteAddress;
+  // }
 
   console.log(ip);
   return {
